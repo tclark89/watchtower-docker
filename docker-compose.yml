@@ -16,6 +16,11 @@ services:
       - WATCHTOWER_HTTP_API_METRICS=true
       - WATCHTOWER_HTTP_API_TOKEN=mytoken
       - WATCHTOWER_HTTP_API_PERIODIC_POLLS=true
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.watchtower.rule=Host(`watchtower.tyler-clark.com`)
+      - traefik.http.routers.watchtower.tls=true
+      - traefik.http.routers.watchtower.tls.certresolver=cloudflare
 
 networks:
   default:
